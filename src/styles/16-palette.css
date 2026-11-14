@@ -1,0 +1,13 @@
+/* palette */
+.overlay{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:20px;background:rgba(10,10,12,.55);opacity:0;pointer-events:none;transition:opacity .35s}
+.overlay.open{opacity:1;pointer-events:auto}
+.sheet{width:min(560px,100%);background:var(--surface);border-radius:28px;position:relative;transform:translateY(20px) scale(.97);transition:transform .5s var(--spring);overflow:hidden}
+.overlay.open .sheet{transform:none}
+.sheet input{width:100%;border:0;border-bottom:1px solid var(--line);padding:22px 24px;font:500 17px var(--body);background:transparent;color:var(--ink);outline:0}
+.sheet nav{padding:8px}
+.sheet nav a{display:flex;justify-content:space-between;padding:12px 16px;border-radius:14px;font-weight:500}
+.sheet nav a:hover,.sheet nav a.sel{background:var(--bg)}
+.sheet nav a kbd{font:12px var(--body);color:var(--muted)}
+.kHint{display:inline-flex;gap:4px;align-items:center;font-size:13px;color:var(--muted)}
+.kHint kbd{font:600 12px var(--body);padding:2px 7px;border-radius:6px;border:1px solid var(--line);background:var(--surface)}
+

@@ -1,0 +1,21 @@
+/* animated system diagrams */
+.diag{position:sticky;top:calc(100px + env(safe-area-inset-top,0px));border-radius:32px;padding:28px;color:var(--on-tint);display:flex;flex-direction:column;gap:12px;min-height:520px}
+.diag.lilac{background:var(--lilac)}.diag.mint{background:var(--mint)}
+.diag .cap{display:flex;justify-content:space-between;align-items:center;gap:10px;font-weight:600;font-size:15px}
+.diag .cap .pill{background:#fff;border-color:transparent;color:var(--on-tint)}
+.diag svg.sys{width:100%;height:auto;flex:1;overflow:visible}
+.sys .n rect{fill:#fff}
+.sys .n.t rect{fill:var(--on-tint)}
+.sys .n.t text{fill:#fff}
+.sys .n.t text.s{fill:#BDBCB6}
+.sys text{font-family:var(--body);fill:var(--on-tint)}
+.sys text.h{font-weight:600;font-size:15px}
+.sys text.s{font-size:12px;fill:#5E5D59}
+.sys .w{fill:none;stroke:rgba(21,21,21,.35);stroke-width:1.5;stroke-dasharray:4 5;animation:dash 1.4s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-18}}
+.sys .pk{fill:var(--on-tint)}
+.sys .pk.c{fill:#E9714F}
+.diag .note{font-size:14px;opacity:.75}
+
+
+

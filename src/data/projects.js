@@ -1,0 +1,83 @@
+// "Projects and research" index. `thumb` picks the visual shown when a row is open.
+export const PROJECTS = [
+  {
+    year: '2025',
+    name: 'Cloud marketplace on AWS',
+    blurb: 'Team project: an OLX-style marketplace architected for up to 1M daily users',
+    tags: [{ tone: 'sky', label: 'Cloud architecture' }, { label: 'Team project' }],
+    bullets: [
+      ['Multi-tier AWS architecture', ' with EC2, RDS (PostgreSQL), S3, Lambda and CloudFront, following the Well-Architected Framework.'],
+      ['Infrastructure as code with Terraform', ' for repeatable, multi-AZ deployments that survive failures.'],
+      ['Auth with AWS Cognito', ', JWTs and separate roles for buyers, sellers and admins.'],
+      ['Image pipeline', ' using S3 pre-signed uploads, Lambda processing and CloudFront delivery.'],
+      ['Stripe payments', ', search APIs with live filters, and an admin dashboard with cost tracking.'],
+    ],
+    stack: ['EC2', 'RDS', 'S3', 'Lambda', 'CloudFront', 'Cognito', 'Terraform', 'Stripe'],
+    thumb: 'aws',
+  },
+  {
+    year: '2024 – 25',
+    name: 'SKIP',
+    blurb: 'School carpooling app, live for six months with 150+ users',
+    tags: [{ tone: 'coral', label: 'Mobile + research' }, { label: 'Flutter' }],
+    bullets: [
+      ['A parent-managed carpooling app', ' for school children, built in Flutter on Firebase with OTP and email auth and Google Maps routing.'],
+      ['Rolled out at International School Lahore', ' with 150+ active users in the first three months.'],
+      ['Tested with 50+ people', ' before launch, shipped to Google Play and the App Store, and ran in production for six months.'],
+      ['Led research on trust and privacy', ': 25 interviews showed parents share more when a school endorses the app.'],
+    ],
+    stack: ['Flutter', 'Firebase', 'Google Maps SDK', 'UX research'],
+    thumb: 'phone',
+  },
+  {
+    year: '2024',
+    name: 'Zaamin',
+    blurb: 'An HR portal built around data security and compliance',
+    tags: [{ label: 'Security' }, { label: 'Full-stack' }],
+    bullets: [
+      ['AES-256 encryption', ', audit logging, role-based access control and two-factor auth.'],
+      ['Third-party integrations', ': Hunter for email verification, Visual Crossing for location data, EmailJS for transactional email.'],
+      ['A compliance dashboard', ' for real-time monitoring of security metrics.'],
+      ['Agile team of four', ', rotating between Scrum, frontend and backend roles.'],
+    ],
+    stack: ['MongoDB', 'Express', 'React', 'Node.js', 'AES-256', '2FA'],
+    thumb: 'zaamin',
+  },
+  {
+    year: '2024',
+    name: 'Toxicity classifier',
+    blurb: 'Content moderation with BERT and DeBERTa',
+    tags: [{ label: 'Machine learning' }, { label: 'Python' }],
+    bullets: [
+      ['Pretrained transformer models', ' (BERT, DeBERTa) classifying comments into six toxicity categories.'],
+      ['Benchmarked against', ' Naive Bayes, logistic regression and RNNs on accuracy, precision, recall and F1.'],
+    ],
+    stack: ['Python', 'BERT', 'DeBERTa', 'NLP'],
+    thumb: 'chat',
+  },
+  {
+    year: '2024',
+    name: 'Qanoon Connect',
+    blurb: 'A safe space for women lawyers and clients in Pakistan',
+    tags: [{ tone: 'coral', label: 'UX research' }],
+    bullets: [
+      ['16 interviews', ' with women lawyers and clients, followed by thematic analysis.'],
+      ['Designed features from the findings', ': a safe discussion space and direct contact with legal professionals.'],
+    ],
+    stack: ['Qualitative research', 'UX design'],
+    thumb: 'qanoon',
+  },
+  {
+    year: '2023 – 24',
+    name: 'Research at CSaLT & RICE Lab',
+    blurb: 'Kahaani, MigraineAid and forest sound classification',
+    tags: [{ tone: 'coral', label: 'Research' }],
+    bullets: [
+      ['Kahaani', ': literature review and interview work for an Urdu literacy project for grades 3 to 6.'],
+      ['MigraineAid', ': three months of daily testing on a migraine prediction app, focused on usability.'],
+      ['FSC22', ': a sound classification model for 27 classes of forest sounds using MFCC features.'],
+    ],
+    stack: ['HCI research', 'Android testing', 'Machine learning'],
+    thumb: 'urdu',
+  },
+];

@@ -1,0 +1,13 @@
+/* services */
+.svcGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:10px;display:flex;flex-direction:column}
+.svcArt{aspect-ratio:1/.82;border-radius:20px;display:grid;place-items:center;color:var(--on-tint);overflow:hidden}
+.svcArt svg{width:44%;height:auto;transition:transform .8s var(--spring)}
+.svc:hover .svcArt svg{transform:rotate(-10deg) scale(1.12)}
+.svcBody{padding:20px 14px 14px;display:flex;flex-direction:column;gap:10px;flex:1}
+.svcBody h3{font-size:24px}
+.svcBody p{color:var(--muted);font-size:15px}
+.svcFit{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.svcFit span:first-child{color:var(--muted)}
+.svcFit span:last-child{font-weight:600;text-align:right}
+

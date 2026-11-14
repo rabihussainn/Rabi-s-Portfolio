@@ -1,0 +1,19 @@
+/* contact */
+.contact{padding:130px 0 40px}
+.cBox{position:relative;background:var(--ink);color:var(--bg);border-radius:40px;padding:clamp(34px,7vw,90px);overflow:hidden}
+.cBox h2{font-size:clamp(54px,9vw,140px);letter-spacing:-.06em;line-height:.92;max-width:10ch}
+.cBox p{opacity:.7;margin-top:26px;max-width:46ch}
+.cBox .mail{margin-top:22px;font-weight:600;opacity:.85;user-select:all}
+.cLinks{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.cBox .btn{background:var(--bg);color:var(--ink);border-color:var(--bg)}
+.cBox .btn .ic{background:var(--ink);color:var(--bg)}
+.cBox .btn.ghost{background:transparent;color:var(--bg);border-color:rgba(127,127,127,.4)}
+.cBox .btn.ghost .ic{background:var(--bg);color:var(--ink)}
+.badge{position:absolute;right:clamp(20px,5vw,70px);top:clamp(20px,5vw,70px);width:150px;height:150px;display:grid;place-items:center}
+.badge svg{position:absolute;inset:0;animation:spin 16s linear infinite}
+.badge text{font:600 11.5px var(--body);letter-spacing:.18em;fill:currentColor}
+.badge .core{width:58px;height:58px;border-radius:16px;background:var(--butter);color:var(--on-tint);display:grid;place-items:center;font-size:22px;transform:rotate(12deg)}
+@keyframes spin{to{transform:rotate(360deg)}}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:30px 0 40px;font-size:14px;color:var(--muted)}
+footer a:hover{color:var(--ink)}
+

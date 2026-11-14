@@ -1,31 +1,35 @@
-# Rabi Hussain – Portfolio
+# Rabi Hussain – portfolio
 
-A single static page: no build step, no dependencies.
+My personal site, built with **React 18** and **Vite**.
 
-```
-index.html        the whole site (HTML, CSS and JS inline)
-assets/rabi.jpg   hero photo
-favicon.svg       browser tab icon
-```
-
-## Run locally
-Open `index.html` in a browser, or serve the folder:
+## Run it
 
 ```bash
-npx serve .        # or: python3 -m http.server
+npm install
+npm run dev       # local dev server
+npm run build     # production build in dist/
+npm run preview   # serve the build locally
 ```
 
-## Deploy
-- **GitHub Pages:** push to your repo, then Settings → Pages → deploy from the branch and folder that contains `index.html`.
-- **Vercel / Netlify:** import the repo. Framework preset "Other", no build command, output directory = this folder.
+Images go in `public/assets/` (for example `public/assets/rabi.jpg`, `public/assets/kollegio/…`, `public/assets/qanoon/…`) and the favicon in `public/favicon.svg`.
 
-## Editing
-- Colors live in `:root` at the top of the `<style>` block (`--lilac`, `--mint`, `--sky`, `--coral`, `--butter`).
-  Lilac = Kollegio, mint = Pattern, sky = cloud, coral = research, butter = highlight.
-- Resume buttons point to the Google Drive file; search for `drive.google.com` to change all four at once.
-- Fonts load from Google Fonts (Bricolage Grotesque + Instrument Sans).
-- Respects `prefers-reduced-motion` and dark mode.
+## How it's organised
 
-## After deploying
-Change `og:image` in `<head>` to the full URL (e.g. `https://yourdomain.com/assets/rabi.jpg`)
-so link previews show the photo on LinkedIn and Slack.
+```
+src/
+  App.jsx                 page layout: one component per section
+  components/             Nav, Hero, Work, Journey, AiSection, About, Stack, Contact, CommandPalette
+                          + KollegioPrototype, QanoonPrototype, PartnerFlowDiagram, ProjectIndex
+  data/                   all copy and content (roles, projects, journey, stack, links)
+  hooks/                  useInView, usePlaybackLoop, useScaleToFit, useReducedMotion
+  animations/             frame-by-frame timelines for the two phone prototypes + easing helpers
+  styles/                 plain CSS, split by section and imported in cascade order
+```
+
+A few decisions worth noting:
+
+- **Content lives in `src/data/`.** Adding a project or a job is a data change, not a markup change.
+- **Prototype animations are pure functions of time.** `createKollegioRenderer(el)` returns `render(t)`, and `usePlaybackLoop` drives it with `requestAnimationFrame`, pausing when the phone is off screen and resuming where it left off. Those layers are updated through refs rather than React state, so a 60fps animation never triggers a re-render.
+- **Scroll reveals are state, not DOM mutations.** `<Reveal>` and `useInView` add the `in` class through React, so it can't be wiped by a re-render.
+- **Respects `prefers-reduced-motion`.** Animations freeze on a representative frame instead of looping.
+- **No UI dependencies.** Just React and CSS custom properties, with light and dark themes.

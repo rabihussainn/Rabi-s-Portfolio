@@ -1,0 +1,19 @@
+/* pills & buttons */
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;font-size:14px;font-weight:600;color:var(--on-tint);background:var(--surface);border:1px solid var(--line);white-space:nowrap}
+.pill.butter{background:var(--butter);border-color:transparent}
+.pill.lilac{background:var(--lilac);border-color:transparent}
+.pill.mint{background:var(--mint);border-color:transparent}
+.pill.coral{background:var(--coral);border-color:transparent}
+.pill.sky{background:var(--sky);border-color:transparent}
+.pill.plain{color:var(--ink)}
+.pill svg{width:15px;height:15px;fill:currentColor}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:600;font-size:15px;border:1px solid var(--ink);cursor:pointer;transition:transform .4s var(--spring)}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn .ic{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--bg);color:var(--ink);transition:transform .4s var(--spring)}
+.btn.ghost .ic{background:var(--ink);color:var(--bg)}
+.btn:hover .ic{transform:rotate(-45deg)}
+.dot{width:8px;height:8px;border-radius:50%;background:#2F9E5B;animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(47,158,91,.5)}70%,100%{box-shadow:0 0 0 8px rgba(47,158,91,0)}}
+

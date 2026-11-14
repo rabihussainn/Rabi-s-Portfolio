@@ -1,0 +1,60 @@
+/* Qanoon Connect prototype animation */
+.qStage{display:grid;place-items:start center}
+.qPhone{position:relative;width:min(100%,280px);aspect-ratio:430/932;border-radius:13%/6%;overflow:hidden;background:#fff;box-shadow:0 24px 50px -18px rgba(21,21,21,.35),0 0 0 1px rgba(21,21,21,.08)}
+.qScr{position:absolute;left:0;top:0;width:430px;height:932px;transform-origin:0 0;overflow:hidden}
+.qS{position:absolute;inset:0;background:#fff;will-change:transform}
+.qS img{width:430px;height:932px;max-width:none;display:block}
+.qP{position:absolute;left:0;width:430px;background-repeat:no-repeat;background-size:430px 932px}
+.qTouch{z-index:10}
+/* Kollegio prototype animation (real Figma screens) */
+.kStage{flex:1;display:grid;place-items:center;padding:6px 0}
+.kPhone{position:relative;width:min(100%,330px,calc((100svh - 240px) * .4634));aspect-ratio:393/848;border-radius:34px;overflow:hidden;background:#F9F7F2;box-shadow:0 30px 60px -20px rgba(21,21,21,.35),0 0 0 1px rgba(21,21,21,.08)}
+.kScr{position:absolute;left:0;top:0;width:393px;height:848px;transform-origin:0 0;font-family:var(--body);color:#1A2A1E}
+.kScr .kL{position:absolute;inset:0;width:393px;height:848px;max-width:none}
+.kP{position:absolute;background-repeat:no-repeat;background-size:393px 848px}
+.kCard{position:absolute;left:29px;top:95px;width:335px;height:605px;transform-origin:50% 100%;border-radius:12px;overflow:hidden}
+.kCard img{width:335px;height:605px;max-width:none}
+.kYes,.kNo{position:absolute;inset:0;border-radius:12px;padding:22px 22px;opacity:0}
+.kYes{background:linear-gradient(155deg,#237323 0%,#3F8A3F 45%,#8DB78D 100%);color:#fff;opacity:0}
+.kYes i{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:2px solid #fff}
+.kYes svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.kYes b{display:block;margin-top:14px;max-width:210px;font-size:27px;line-height:1.12;font-weight:600;letter-spacing:-.02em}
+.kNo{background:rgba(243,240,230,.9);text-align:right}
+.kNo b{display:block;font-size:26px;font-weight:600;letter-spacing:-.02em;color:#1A2A1E}
+.kNo span{display:block;margin-top:2px;font-size:15px;font-weight:500;color:#5F665F}
+.kUndo{position:absolute;left:150px;top:668px;width:96px;height:42px;max-width:none}
+.kSheet{position:absolute;left:0;top:329px;width:393px;height:519px}
+.kSheet img{width:393px;height:519px;max-width:none}
+.kLine,.kRow{position:absolute;left:12px;width:369px;background:#F9F7F2;transform-origin:100% 50%}
+.kTouch{position:absolute;left:0;top:0;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(21,21,21,.2);border:2px solid rgba(255,255,255,.85);box-shadow:0 2px 10px rgba(0,0,0,.15);opacity:0}
+/* Kollegio AI chat illustration */
+.chatWin{background:#fff;border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:12px;flex:1;min-height:400px}
+.bub{max-width:86%;padding:11px 14px;border-radius:16px;font-size:14px;line-height:1.45;opacity:0;transform:translateY(8px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.bub.me{align-self:flex-end;background:var(--on-tint);color:#fff;border-bottom-right-radius:5px}
+.bub.bot{align-self:flex-start;background:#F1EFFA;color:var(--on-tint);border-bottom-left-radius:5px}
+.typing{align-self:flex-start;background:#F1EFFA;border-radius:16px;padding:12px 14px;display:none;gap:4px}
+.typing.on{display:flex}
+.typing i{width:6px;height:6px;border-radius:50%;background:#8A8796;animation:tdot 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes tdot{50%{transform:translateY(-4px);opacity:.5}}
+.recs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rec{border:1.5px solid rgba(21,21,21,.1);border-radius:14px;padding:8px;display:flex;flex-direction:column;gap:7px;opacity:0;transform:translateY(14px) scale(.94);transition:opacity .5s var(--ease),transform .7s var(--spring),border-color .3s}
+.rec .ph{aspect-ratio:4/3;border-radius:9px}
+.rec .ln{height:7px;border-radius:4px;background:#E7E5EE}
+.rec .ln.s{width:60%}
+.rec .ft{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:700;color:var(--on-tint)}
+.rec .fit{background:var(--butter);border-radius:999px;padding:2px 7px;white-space:nowrap}
+@media (max-width:640px){.rec .ft{flex-direction:column;align-items:flex-start;gap:5px;font-size:10px}.rec .hrt{width:20px;height:20px}.chatWin{min-height:0}}
+.rec .hrt{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(21,21,21,.15);font-size:11px;color:#8A8796;transition:transform .5s var(--spring),background-color .3s,color .3s}
+.rec.liked{border-color:var(--on-tint)}
+.rec.liked .hrt{background:var(--coral);color:var(--on-tint);border-color:transparent;transform:scale(1.25)}
+.fb{align-self:flex-start;font-size:13px;font-weight:600;color:#2F7A4E;background:#E3F4EA;border-radius:999px;padding:6px 12px;opacity:0;transform:translateY(6px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+#chat .on{opacity:1;transform:none}
+.svc3{display:flex;align-items:center}
+.svc3 .nd{background:#fff;border-radius:12px;padding:9px 13px;font-size:13px;font-weight:600;white-space:nowrap}
+.svc3 .nd.aisvc{background:var(--on-tint);color:#fff}
+.svc3 .wire{flex:1;position:relative;height:0;border-top:2px dashed rgba(21,21,21,.35);margin:0 6px}
+.svc3 .wire::after{content:"";position:absolute;top:-5px;left:0;width:8px;height:8px;border-radius:50%;background:var(--on-tint);animation:wireMove 1.8s var(--ease) infinite}
+.svc3 .wire.b::after{background:#E9714F;animation-delay:.9s;animation-direction:alternate}
+@keyframes wireMove{from{left:0}to{left:calc(100% - 8px)}}
+
