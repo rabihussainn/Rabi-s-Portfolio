@@ -74,6 +74,24 @@ p{margin:0}
 .nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
 .nav ul a{display:block;padding:8px 14px;border-radius:999px;font-size:14px;font-weight:500;color:var(--muted);transition:background .25s,color .25s}
 .nav ul a:hover{background:var(--bg);color:var(--ink)}
+.navEnd{display:flex;align-items:center;gap:8px}
+.menuBtn{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;position:relative;padding:0}
+.menuBtn i{position:absolute;left:13px;right:13px;height:2px;border-radius:2px;background:currentColor;transition:transform .35s var(--ease),top .35s var(--ease)}
+.menuBtn i:first-child{top:17px}.menuBtn i:last-child{top:25px}
+.nav.open .menuBtn i:first-child{top:21px;transform:rotate(45deg)}
+.nav.open .menuBtn i:last-child{top:21px;transform:rotate(-45deg)}
+.menuBtn:focus-visible,.mMenu a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.mMenu{display:none}
+@media (max-width:980px){
+  .menuBtn{display:block}
+  .mMenu{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:calc(100% + 8px);padding:10px;border-radius:28px;background:var(--surface);border:1px solid var(--line);box-shadow:0 24px 48px -20px rgba(21,21,21,.3);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s,transform .35s var(--ease),visibility 0s .35s;max-height:calc(100svh - 110px);overflow:auto}
+  .nav.open .mMenu{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .35s var(--ease)}
+  .mMenu a{font:700 26px/1.1 var(--display);letter-spacing:-.03em;padding:14px 16px;border-radius:18px;color:var(--ink)}
+  .mMenu a:active,.mMenu a:hover{background:var(--bg)}
+  .mMenu .mRes{font:600 16px var(--body);letter-spacing:0;color:var(--muted);margin-top:6px;border-top:1px solid var(--line);border-radius:0 0 18px 18px}
+}
+@media (max-width:380px){.nav .btn{padding:10px 14px}}
+
 .nav .btn{padding:10px 18px;font-size:14px}
 
 /* hero */
@@ -104,10 +122,10 @@ p{margin:0}
 .rot{display:inline-flex;vertical-align:bottom;height:1.12em;overflow:hidden;border-radius:.3em;padding:0 .18em;margin:0 .02em;background:var(--butter);color:var(--on-tint);transition:width .6s var(--ease),background-color .6s var(--ease);position:relative;top:-.04em}
 .rot-track{display:flex;flex-direction:column;align-items:flex-start;transition:transform .7s var(--ease)}
 .rot-track span{display:block;height:1.12em;line-height:1.12em;white-space:nowrap}
-.sw{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;margin-bottom:-.08em}
+.sw{display:inline-block;overflow:hidden;vertical-align:bottom;padding:0 .12em .08em 0;margin:0 -.12em -.08em 0}
 .sw>span{display:inline-block;transform:translateY(105%);transition:transform 1s var(--ease)}
 .loaded .sw>span{transform:none}
-.heroRow{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end;margin-top:44px}
+.heroRow{display:grid;grid-template-columns:minmax(0,62ch);gap:40px;align-items:end;margin-top:44px}
 .heroRow .lede{font-size:19px}
 .heroRow .lede b{color:var(--ink);font-weight:600}
 .heroActions{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
@@ -184,6 +202,37 @@ p{margin:0}
 .sys .pk.c{fill:#E9714F}
 .diag .note{font-size:14px;opacity:.75}
 
+
+
+/* Qanoon Connect prototype animation */
+.qStage{display:grid;place-items:start center}
+.qPhone{position:relative;width:min(100%,280px);aspect-ratio:430/932;border-radius:13%/6%;overflow:hidden;background:#fff;box-shadow:0 24px 50px -18px rgba(21,21,21,.35),0 0 0 1px rgba(21,21,21,.08)}
+.qScr{position:absolute;left:0;top:0;width:430px;height:932px;transform-origin:0 0;overflow:hidden}
+.qS{position:absolute;inset:0;background:#fff;will-change:transform}
+.qS img{width:430px;height:932px;max-width:none;display:block}
+.qP{position:absolute;left:0;width:430px;background-repeat:no-repeat;background-size:430px 932px}
+.qTouch{z-index:10}
+/* Kollegio prototype animation (real Figma screens) */
+.kStage{flex:1;display:grid;place-items:center;padding:6px 0}
+.kPhone{position:relative;width:min(100%,330px,calc((100svh - 240px) * .4634));aspect-ratio:393/848;border-radius:34px;overflow:hidden;background:#F9F7F2;box-shadow:0 30px 60px -20px rgba(21,21,21,.35),0 0 0 1px rgba(21,21,21,.08)}
+.kScr{position:absolute;left:0;top:0;width:393px;height:848px;transform-origin:0 0;font-family:var(--body);color:#1A2A1E}
+.kScr .kL{position:absolute;inset:0;width:393px;height:848px;max-width:none}
+.kP{position:absolute;background-repeat:no-repeat;background-size:393px 848px}
+.kCard{position:absolute;left:29px;top:95px;width:335px;height:605px;transform-origin:50% 100%;border-radius:12px;overflow:hidden}
+.kCard img{width:335px;height:605px;max-width:none}
+.kYes,.kNo{position:absolute;inset:0;border-radius:12px;padding:22px 22px;opacity:0}
+.kYes{background:linear-gradient(155deg,#237323 0%,#3F8A3F 45%,#8DB78D 100%);color:#fff;opacity:0}
+.kYes i{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:2px solid #fff}
+.kYes svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.kYes b{display:block;margin-top:14px;max-width:210px;font-size:27px;line-height:1.12;font-weight:600;letter-spacing:-.02em}
+.kNo{background:rgba(243,240,230,.9);text-align:right}
+.kNo b{display:block;font-size:26px;font-weight:600;letter-spacing:-.02em;color:#1A2A1E}
+.kNo span{display:block;margin-top:2px;font-size:15px;font-weight:500;color:#5F665F}
+.kUndo{position:absolute;left:150px;top:668px;width:96px;height:42px;max-width:none}
+.kSheet{position:absolute;left:0;top:329px;width:393px;height:519px}
+.kSheet img{width:393px;height:519px;max-width:none}
+.kLine,.kRow{position:absolute;left:12px;width:369px;background:#F9F7F2;transform-origin:100% 50%}
+.kTouch{position:absolute;left:0;top:0;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(21,21,21,.2);border:2px solid rgba(255,255,255,.85);box-shadow:0 2px 10px rgba(0,0,0,.15);opacity:0}
 /* Kollegio AI chat illustration */
 .chatWin{background:#fff;border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:12px;flex:1;min-height:400px}
 .bub{max-width:86%;padding:11px 14px;border-radius:16px;font-size:14px;line-height:1.45;opacity:0;transform:translateY(8px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
@@ -243,6 +292,16 @@ p{margin:0}
 .rowGrid li::before{content:"";position:absolute;left:2px;top:15px;width:7px;height:7px;border-radius:2px;transform:rotate(45deg);background:var(--ink)}
 .rowGrid li b{color:var(--ink);font-weight:600}
 .rowGrid .stackList{margin-top:16px}
+.brandLink{display:inline-flex;align-items:center;gap:.28em;color:inherit;text-decoration:none}
+.brandLink:hover{opacity:.8}
+.brandLink:focus-visible{outline:2px solid currentColor;outline-offset:6px;border-radius:8px}
+.brandMark{height:.82em;width:auto;display:block}
+.thumb .zLogo,.peek .zLogo{width:72%;height:auto}
+.protoEmbed{grid-column:2/-1;display:flex;flex-direction:column;gap:10px}
+.protoEmbed iframe{width:100%;height:min(720px,80vh);border:1px solid var(--line);border-radius:22px;background:var(--surface)}
+.protoEmbed a{color:var(--muted);font-size:14px;font-weight:600}
+@media (max-width:980px){.protoEmbed{grid-column:auto}.protoEmbed iframe{height:620px}}
+
 .thumb,.peek>div{display:grid;place-items:center;color:var(--on-tint)}
 .thumb{border-radius:22px;aspect-ratio:4/3;overflow:hidden}
 .thumb svg.logo,.peek svg.logo{width:30%;height:30%;fill:currentColor}
@@ -416,7 +475,7 @@ footer a:hover{color:var(--ink)}
 /* responsive */
 @media (max-width:980px){
   .nav ul{display:none}
-  .heroRow,.sHead,.journey,.flow,.ai,.about,.stackHead,.feat{grid-template-columns:1fr}
+  .heroRow,.sHead,.journey,.flow,.ai,.about,.stackHead,.feat{grid-template-columns:minmax(0,1fr)}
   .feat.flip .featInfo{order:0}
   .sHead .lede{justify-self:start}
   .shortcuts{grid-template-columns:1fr}
@@ -457,6 +516,11 @@ footer a:hover{color:var(--ink)}
   .stk,.tl,.mePhoto{opacity:1;transform:none}
   .nav{transform:translate(-50%,0)}
 }
+
+/* tighter section rhythm on smaller screens */
+@media (max-width:980px){.section,.contact{padding:96px 0 24px}.sHead{gap:18px;margin-bottom:40px}}
+@media (max-width:640px){.section,.contact{padding:64px 0 8px}.sHead{gap:14px;margin-bottom:28px}.hero{padding-bottom:0}}
+.jWhere{white-space:normal;max-width:100%}
 </style>
 </head>
 <body>
@@ -479,7 +543,19 @@ footer a:hover{color:var(--ink)}
     <li><a href="#about">About</a></li>
     <li><a href="https://drive.google.com/file/d/16mqEujwzwUu4Ebv8uwwzOrN0cHp23_1U/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
   </ul>
-  <a class="btn" href="#contact">Let’s talk</a>
+  <div class="navEnd">
+    <a class="btn" href="#contact">Let’s talk</a>
+    <button class="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mMenu"><i></i><i></i></button>
+  </div>
+  <nav class="mMenu" id="mMenu" aria-label="Sections">
+    <a href="#work">Work</a>
+    <a href="#journey">Journey</a>
+    <a href="#ai">AI in my work</a>
+    <a href="#about">About</a>
+    <a href="#stack">Stack</a>
+    <a href="#contact">Contact</a>
+    <a class="mRes" href="https://drive.google.com/file/d/16mqEujwzwUu4Ebv8uwwzOrN0cHp23_1U/view?usp=sharing" target="_blank" rel="noopener">Resume (PDF) ↗</a>
+  </nav>
 </header>
 
 <main id="top">
@@ -500,7 +576,7 @@ footer a:hover{color:var(--ink)}
     </h1>
     <p class="claim" aria-label="I’m Rabi. I build, ship, integrate and deploy products people use.">
       <span class="sw"><span>I’m Rabi.</span></span> <span class="sw"><span>I</span></span>
-      <span class="rot" id="rot" aria-hidden="true"><span class="rot-track"><span>build</span><span>ship</span><span>integrate</span><span>deploy</span></span></span>
+      <span class="rot" id="rot" aria-hidden="true"><span class="rot-track"><span>build</span><span>ship</span><span>integrate</span><span>deploy</span><span>build</span></span></span>
       <br><span class="sw"><span class="soft">products</span></span> <span class="sw"><span class="soft">people</span></span> <span class="sw"><span class="soft">use.</span></span>
     </p>
     <div class="heroRow">
@@ -510,17 +586,6 @@ footer a:hover{color:var(--ink)}
           <a class="btn" href="#work">See my work <span class="ic" aria-hidden="true">↘</span></a>
           <a class="btn ghost" href="https://drive.google.com/file/d/16mqEujwzwUu4Ebv8uwwzOrN0cHp23_1U/view?usp=sharing" target="_blank" rel="noopener">Resume (PDF) <span class="ic" aria-hidden="true">↗</span></a>
         </div>
-      </div>
-      <div class="heroSide rv" data-d="1">
-        <span class="pill plain"><span class="dot"></span>Open to remote roles and projects</span>
-        <div class="chips">
-          <span class="pill lilac">Full-stack</span>
-          <span class="pill mint">Backend &amp; APIs</span>
-          <span class="pill sky"><svg><use href="#i-aws"/></svg>AWS + Cloudflare</span>
-          <span class="pill coral">Remote since day one</span>
-          <span class="pill butter">LUMS CS ’25</span>
-        </div>
-        <p class="now"><b>Now:</b> software engineer at Kollegio.</p>
       </div>
     </div>
   </div>
@@ -537,7 +602,7 @@ footer a:hover{color:var(--ink)}
     <article class="feat">
       <div class="featInfo rv">
         <div class="meta"><span class="pill lilac">Current role</span><span class="pill plain">Remote, US</span><span class="pill plain">Jan 2026 – now</span></div>
-        <h3>Kollegio</h3>
+        <h3><a class="brandLink" href="https://www.kollegio.ai/" target="_blank" rel="noopener"><img class="brandMark" src="assets/kollegio/symbol.png" width="128" height="128" alt="Kollegio logo">Kollegio</a></h3>
         <p>An AI-powered EdTech startup making college discovery, admissions and scholarships more accessible to students across the US.</p>
         <dl class="facts">
           <div><dt>Role</dt><dd>Software Engineer</dd></div>
@@ -566,21 +631,8 @@ footer a:hover{color:var(--ink)}
         <div class="stackList"><span>React</span><span>Remix</span><span>TypeScript</span><span>GraphQL</span><span>NestJS</span><span>Prisma</span><span>PostgreSQL</span><span>React Query</span><span>Chakra UI</span><span>Mixpanel</span></div>
       </div>
       <div class="diag lilac rv" data-d="1">
-        <div class="cap"><span>AI chat and recommendations</span><span class="pill">Illustration</span></div>
-        <div class="chatWin" id="chat" role="img" aria-label="Illustration: a student asks for colleges, the AI replies with three recommendations, and the student likes one. Underneath, three services connect: client, backend and AI service.">
-          <div class="bub me" data-at="1">I want a mid-sized school with strong CS and good financial aid.</div>
-          <div class="typing" data-at="2"><i></i><i></i><i></i></div>
-          <div class="bub bot" data-at="3">Here are three that fit. Tap the heart on the ones you like and I’ll learn from it.</div>
-          <div class="recs">
-            <div class="rec r1" data-at="4"><div class="ph" style="background:var(--sky)"></div><div class="ln"></div><div class="ln s"></div><div class="ft"><span class="fit">92% fit</span><span class="hrt">♥</span></div></div>
-            <div class="rec" data-at="5"><div class="ph" style="background:var(--mint)"></div><div class="ln"></div><div class="ln s"></div><div class="ft"><span class="fit">88% fit</span><span class="hrt">♥</span></div></div>
-            <div class="rec" data-at="6"><div class="ph" style="background:var(--coral)"></div><div class="ln"></div><div class="ln s"></div><div class="ft"><span class="fit">85% fit</span><span class="hrt">♥</span></div></div>
-          </div>
-          <div class="fb" data-at="8">Feedback saved · recommendations updated</div>
-        </div>
-        <div class="svc3" aria-hidden="true">
-          <span class="nd">Client</span><span class="wire"></span><span class="nd">Backend</span><span class="wire b"></span><span class="nd aisvc">AI service</span>
-        </div>
+        <div class="cap"><span>AI chat and swipe recommender</span><span class="pill">Prototype</span></div>
+        <div class="kStage"><div class="kPhone" id="kPhone" role="img" aria-label="Animated Kollegio prototype: from the home screen the student picks deciding where to study, answers Reka in chat, then swipes through college cards, asks Reka why a college fits, saves one with a right swipe, passes on another with a left swipe and undoes it."><div class="kScr"><img class="kL" data-k="home" src="assets/kollegio/home.webp" alt=""><img class="kL" data-k="chat" src="assets/kollegio/chat-base.webp" alt=""><div class="kP" data-k="c-bub" style="top:114px;left:0px;width:393px;height:54px;background-image:url(assets/kollegio/chat-full.webp);background-position:-0px -114px"></div><div class="kP" data-k="c-q" style="top:178px;left:0px;width:393px;height:46px;background-image:url(assets/kollegio/chat-full.webp);background-position:-0px -178px"></div><div class="kP" data-k="c-o1" style="top:228px;left:0px;width:196px;height:100px;background-image:url(assets/kollegio/chat-full.webp);background-position:-0px -228px"></div><div class="kP" data-k="c-o2" style="top:228px;left:196px;width:197px;height:100px;background-image:url(assets/kollegio/chat-full.webp);background-position:-196px -228px"></div><img class="kL" data-k="quiz" src="assets/kollegio/quiz-base.webp" alt=""><div class="kP" data-k="q-prog" style="top:110px;left:0px;width:393px;height:30px;background-image:url(assets/kollegio/quiz-full.webp);background-position:-0px -110px"></div><div class="kP" data-k="q-q" style="top:150px;left:0px;width:393px;height:70px;background-image:url(assets/kollegio/quiz-full.webp);background-position:-0px -150px"></div><div class="kP" data-k="q-ch" style="top:236px;left:0px;width:393px;height:26px;background-image:url(assets/kollegio/quiz-full.webp);background-position:-0px -236px"></div><div class="kP" data-k="q-o1" style="top:270px;left:0;width:393px;height:58px;background-image:url(assets/kollegio/quiz-o1-off.png);background-size:393px 58px"></div><div class="kP" data-k="q-o1on" style="top:266px;left:0px;width:393px;height:66px;background-image:url(assets/kollegio/quiz-full.webp);background-position:-0px -266px"></div><div class="kP" data-k="q-o2" style="top:336px;left:0px;width:393px;height:66px;background-image:url(assets/kollegio/quiz-full.webp);background-position:-0px -336px"></div><div class="kP" data-k="q-o3" style="top:406px;left:0px;width:393px;height:66px;background-image:url(assets/kollegio/quiz-full.webp);background-position:-0px -406px"></div><div class="kP" data-k="q-o4" style="top:476px;left:0px;width:393px;height:66px;background-image:url(assets/kollegio/quiz-full.webp);background-position:-0px -476px"></div><img class="kL" data-k="deck" src="assets/kollegio/deck-base.webp" alt=""><div class="kCard" data-k="cardB"><img src="assets/kollegio/card-sjsu.webp" alt=""><div class="kNo"><b>Not for you</b><span>We’ll show you fewer like this</span></div></div><div class="kCard" data-k="cardA"><img src="assets/kollegio/card-calpoly.webp" alt=""><div class="kYes"><i><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><b>Added to your Discover page</b></div></div><img class="kUndo" data-k="undo" src="assets/kollegio/undo.webp" alt=""><img class="kL" data-k="dim" src="assets/kollegio/deck-dim.webp" alt=""><div class="kSheet" data-k="sheet"><img src="assets/kollegio/sheet.webp" alt=""><i class="kLine" style="top:152px;height:18px"></i><i class="kLine" style="top:174px;height:18px"></i><i class="kLine" style="top:196px;height:18px"></i><i class="kLine" style="top:218px;height:18px"></i><i class="kRow" style="top:250px;height:68px"></i><i class="kRow" style="top:326px;height:82px"></i></div><img class="kL" data-k="hero" src="assets/kollegio/hero.webp" alt=""><span class="kTouch" data-k="touch"></span></div></div></div>
       </div>
     </article>
 
@@ -704,7 +756,26 @@ footer a:hover{color:var(--ink)}
             <li><b>A compliance dashboard</b> for real-time monitoring of security metrics.</li>
             <li><b>Agile team of four</b>, rotating between Scrum, frontend and backend roles.</li>
           </ul><div class="stackList"><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span><span>AES-256</span><span>2FA</span></div></div>
-          <div class="thumb" style="background:var(--surface);border:1px solid var(--line)"><svg class="logo"><use href="#i-lock"/></svg></div></div></div></div>
+          <div class="thumb" style="background:var(--surface);border:1px solid var(--line)"><svg class="zLogo" role="img" aria-label="Zaamin logo" viewBox="0 0 1303 298" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="zTm" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="436" y="99" width="151" height="199">
+<path d="M436.573 99.1389H586.432V297.414H436.573V99.1389Z" fill="white"/>
+</mask>
+<g mask="url(#zTm)">
+<path d="M509.626 123.325C529.766 123.325 542.735 142.09 543.007 165.363H476.244C476.515 142.093 489.486 123.325 509.626 123.325ZM509.626 100.091C478.246 100.091 452.817 129.585 452.817 165.962L452.83 166.876C442.158 170.348 434.557 179.419 434.557 190.062V248.003C434.557 273.796 468.168 294.712 509.626 294.712C551.081 294.712 584.693 273.796 584.693 248.003V190.062C584.693 179.417 577.092 170.347 566.421 166.876L566.435 165.962C566.435 129.585 541.006 100.091 509.626 100.091ZM488.323 220.156C488.323 209.74 497.859 201.295 509.626 201.295C521.393 201.295 530.928 209.74 530.928 220.156C530.928 226.824 527.018 232.687 521.122 236.039V253.398H498.129V236.039C492.232 232.686 488.323 226.824 488.323 220.156Z" fill-rule="evenodd" clip-rule="evenodd" fill="#F18550"/>
+</g>
+<path d="M857.072 116.721C869.937 116.721 881.28 119.418 891.102 124.813C900.923 130.07 908.601 138.231 914.134 149.298C919.805 160.364 922.641 174.613 922.641 192.042V292.056H860.6V201.587C860.6 189.691 858.801 180.077 855.205 172.745C851.608 165.413 844.484 161.748 833.833 161.748C827.469 161.748 821.867 163.408 817.025 166.728C812.184 170.048 808.449 174.682 805.82 180.63C803.192 186.44 801.878 193.426 801.878 201.587V292.056H743.986V201.587C743.986 189.691 741.981 180.077 737.969 172.745C734.096 165.413 727.179 161.748 717.219 161.748C710.856 161.748 705.254 163.408 700.412 166.728C695.571 169.909 691.836 174.474 689.207 180.422C686.717 186.232 685.472 193.287 685.472 201.587V292.056H622.808V121.701H685.472V145.978C687.132 141.69 690.729 137.332 696.262 132.906C701.934 128.341 708.92 124.537 717.219 121.493C725.519 118.312 734.303 116.721 743.571 116.721C753.67 116.721 762.108 118.243 768.886 121.286C775.664 124.191 781.198 128.133 785.486 133.113C789.912 138.093 793.44 143.488 796.068 149.298C798.005 144.318 801.809 139.338 807.48 134.358C813.29 129.24 820.484 125.021 829.06 121.701C837.775 118.381 847.112 116.721 857.072 116.721ZM961.716 292.056V121.701H1024.8V292.056H961.716ZM994.086 86.6339C984.126 86.6339 975.688 83.1756 968.771 76.2591C961.854 69.2042 958.396 60.8352 958.396 51.152C958.396 41.4688 961.854 33.0998 968.771 26.0449C975.826 18.8517 984.264 15.255 994.086 15.255C1000.59 15.255 1006.54 16.915 1011.93 20.235C1017.33 23.4166 1021.68 27.7049 1025 33.0998C1028.32 38.4947 1029.98 44.5121 1029.98 51.152C1029.98 60.8352 1026.46 69.2042 1019.4 76.2591C1012.35 83.1756 1003.91 86.6339 994.086 86.6339ZM1185.95 116.721C1197.85 116.721 1209.47 119.142 1220.81 123.983C1232.15 128.825 1241.49 136.502 1248.82 147.015C1256.15 157.39 1259.82 171.085 1259.82 188.1V292.056H1196.53V198.475C1196.53 186.301 1193.63 177.172 1187.82 171.085C1182.01 164.86 1174.4 161.748 1164.99 161.748C1158.77 161.748 1152.89 163.408 1147.35 166.728C1141.96 169.909 1137.53 174.474 1134.08 180.422C1130.76 186.232 1129.1 192.941 1129.1 200.55V292.056H1066.02V121.701H1129.1V146.808C1130.76 142.243 1134.21 137.678 1139.47 133.113C1144.87 128.41 1151.57 124.537 1159.6 121.493C1167.76 118.312 1176.54 116.721 1185.95 116.721Z" fill="url(#zTg0)"/>
+<path d="M13.6949 120.645H182.39L97.3161 247.011H175.75V291H9.12547e-05L84.8662 164.427H13.6949V120.645ZM337.319 291V263.403C336.074 266.17 332.893 270.181 327.774 275.438C322.794 280.694 316.154 285.467 307.855 289.755C299.555 293.905 289.872 295.98 278.805 295.98C262.205 295.98 247.681 291.968 235.231 283.945C222.781 275.784 213.098 264.925 206.181 251.368C199.265 237.673 195.806 222.526 195.806 205.926C195.806 189.327 199.265 174.249 206.181 160.692C213.098 146.997 222.781 136.069 235.231 127.908C247.681 119.746 262.205 115.665 278.805 115.665C289.457 115.665 298.794 117.394 306.817 120.853C314.84 124.173 321.342 128.184 326.322 132.888C331.302 137.452 334.76 141.672 336.697 145.545V120.645H399.361V291H337.319ZM257.64 205.926C257.64 213.673 259.439 220.659 263.035 226.884C266.632 232.97 271.404 237.743 277.353 241.201C283.439 244.659 290.148 246.388 297.48 246.388C305.088 246.388 311.797 244.659 317.607 241.201C323.417 237.743 327.982 232.97 331.302 226.884C334.76 220.659 336.489 213.673 336.489 205.926C336.489 198.18 334.76 191.263 331.302 185.177C327.982 178.952 323.417 174.11 317.607 170.652C311.797 167.055 305.088 165.257 297.48 165.257C290.148 165.257 283.439 167.055 277.353 170.652C271.404 174.11 266.632 178.952 263.035 185.177C259.439 191.263 257.64 198.18 257.64 205.926Z" fill="url(#zTg1)"/>
+<defs>
+<linearGradient id="zTg0" x1="1206.64" y1="32.8442" x2="879.864" y2="386.56" gradientUnits="userSpaceOnUse">
+<stop offset="0.0690365" stop-color="#B5E48C"/>
+<stop offset="1" stop-color="#168AAD" stop-opacity="0.82"/>
+</linearGradient>
+<linearGradient id="zTg1" x1="376.918" y1="31.8359" x2="72.2719" y2="237.795" gradientUnits="userSpaceOnUse">
+<stop offset="0.0690365" stop-color="#B5E48C"/>
+<stop offset="1" stop-color="#168AAD" stop-opacity="0.82"/>
+</linearGradient>
+</defs>
+</svg></div></div></div></div>
         </div>
         <div class="row rv" data-peek="3">
           <button class="rowBtn" aria-expanded="false">
@@ -730,7 +801,7 @@ footer a:hover{color:var(--ink)}
             <li><b>16 interviews</b> with women lawyers and clients, followed by thematic analysis.</li>
             <li><b>Designed features from the findings</b>: a safe discussion space and direct contact with legal professionals.</li>
           </ul><div class="stackList"><span>Qualitative research</span><span>UX design</span></div></div>
-          <div class="thumb" style="background:var(--surface);border:1px solid var(--line)"><svg class="logo"><use href="#i-scale"/></svg></div></div></div></div>
+          <div class="qStage"><div class="qPhone" id="qPhone" role="img" aria-label="Animated Qanoon Connect prototype: a client picks her role, reads the legal advice forum and a post's comments, finds a lawyer and starts a chat, then opens the cautions guide; a lawyer then opens the discussion forum, a post, her client chats and her profile."><div class="qScr"><div class="qS" data-n="splash"><img src="assets/qanoon/splash.webp" alt=""></div><div class="qS" data-n="forum"><img src="assets/qanoon/forum.webp" alt=""></div><div class="qS" data-n="cpost"><img src="assets/qanoon/cpost-base.webp" alt=""><i class="qP" style="top:338px;height:90px;background-image:url(assets/qanoon/cpost.webp);background-position:0 -338px"></i></div><div class="qS" data-n="forum"><img src="assets/qanoon/forum.webp" alt=""></div><div class="qS" data-n="chats"><img src="assets/qanoon/chats-base.webp" alt=""><i class="qP" style="top:252px;height:50px;background-image:url(assets/qanoon/chats.webp);background-position:0 -252px"></i><i class="qP" style="top:312px;height:60px;background-image:url(assets/qanoon/chats.webp);background-position:0 -312px"></i><i class="qP" style="top:386px;height:60px;background-image:url(assets/qanoon/chats.webp);background-position:0 -386px"></i></div><div class="qS" data-n="lawyers"><img src="assets/qanoon/lawyers-base.webp" alt=""><i class="qP" style="top:266px;height:90px;background-image:url(assets/qanoon/lawyers.webp);background-position:0 -266px"></i><i class="qP" style="top:356px;height:88px;background-image:url(assets/qanoon/lawyers.webp);background-position:0 -356px"></i><i class="qP" style="top:444px;height:88px;background-image:url(assets/qanoon/lawyers.webp);background-position:0 -444px"></i><i class="qP" style="top:532px;height:88px;background-image:url(assets/qanoon/lawyers.webp);background-position:0 -532px"></i><i class="qP" style="top:620px;height:88px;background-image:url(assets/qanoon/lawyers.webp);background-position:0 -620px"></i><i class="qP" style="top:708px;height:88px;background-image:url(assets/qanoon/lawyers.webp);background-position:0 -708px"></i></div><div class="qS" data-n="chat"><img src="assets/qanoon/chat-base.webp" alt=""><i class="qP" style="top:140px;height:60px;background-image:url(assets/qanoon/chat.webp);background-position:0 -140px"></i><i class="qP" style="top:200px;height:82px;background-image:url(assets/qanoon/chat.webp);background-position:0 -200px"></i><i class="qP qDots" style="top:782px;height:64px;width:130px;background-image:url(assets/qanoon/chat.webp);background-position:0 -782px"></i></div><div class="qS" data-n="lawyers"><img src="assets/qanoon/lawyers-base.webp" alt=""><i class="qP" style="top:266px;height:90px;background-image:url(assets/qanoon/lawyers.webp);background-position:0 -266px"></i><i class="qP" style="top:356px;height:88px;background-image:url(assets/qanoon/lawyers.webp);background-position:0 -356px"></i><i class="qP" style="top:444px;height:88px;background-image:url(assets/qanoon/lawyers.webp);background-position:0 -444px"></i><i class="qP" style="top:532px;height:88px;background-image:url(assets/qanoon/lawyers.webp);background-position:0 -532px"></i><i class="qP" style="top:620px;height:88px;background-image:url(assets/qanoon/lawyers.webp);background-position:0 -620px"></i><i class="qP" style="top:708px;height:88px;background-image:url(assets/qanoon/lawyers.webp);background-position:0 -708px"></i></div><div class="qS" data-n="cautions"><img src="assets/qanoon/cautions-base.webp" alt=""><i class="qP" style="top:252px;height:60px;background-image:url(assets/qanoon/cautions.webp);background-position:0 -252px"></i><i class="qP" style="top:334px;height:74px;background-image:url(assets/qanoon/cautions.webp);background-position:0 -334px"></i><i class="qP" style="top:429px;height:74px;background-image:url(assets/qanoon/cautions.webp);background-position:0 -429px"></i><i class="qP" style="top:524px;height:74px;background-image:url(assets/qanoon/cautions.webp);background-position:0 -524px"></i></div><div class="qS" data-n="splash"><img src="assets/qanoon/splash.webp" alt=""></div><div class="qS" data-n="lforum"><img src="assets/qanoon/lforum.webp" alt=""></div><div class="qS" data-n="lpost"><img src="assets/qanoon/lpost-base.webp" alt=""><i class="qP" style="top:342px;height:90px;background-image:url(assets/qanoon/lpost.webp);background-position:0 -342px"></i></div><div class="qS" data-n="lforum"><img src="assets/qanoon/lforum.webp" alt=""></div><div class="qS" data-n="clients"><img src="assets/qanoon/clients-base.webp" alt=""><i class="qP" style="top:252px;height:50px;background-image:url(assets/qanoon/clients.webp);background-position:0 -252px"></i><i class="qP" style="top:314px;height:60px;background-image:url(assets/qanoon/clients.webp);background-position:0 -314px"></i><i class="qP" style="top:388px;height:60px;background-image:url(assets/qanoon/clients.webp);background-position:0 -388px"></i><i class="qP" style="top:462px;height:62px;background-image:url(assets/qanoon/clients.webp);background-position:0 -462px"></i></div><div class="qS" data-n="profile"><img src="assets/qanoon/profile.webp" alt=""></div><span class="kTouch qTouch"></span></div></div></div></div></div></div>
         </div>
         <div class="row rv" data-peek="5">
           <button class="rowBtn" aria-expanded="false">
@@ -752,9 +823,28 @@ footer a:hover{color:var(--ink)}
   <div class="peek" id="peek" aria-hidden="true">
     <div style="background:var(--sky)"><div class="tiles3"><i><svg><use href="#i-ec2"/></svg></i><i><svg><use href="#i-s3"/></svg></i><i><svg><use href="#i-rds"/></svg></i><i><svg><use href="#i-lambda"/></svg></i><i><svg><use href="#i-cognito"/></svg></i><i><svg><use href="#i-terraform"/></svg></i></div></div>
     <div style="background:var(--coral)"><div class="mPhone"><i></i><i></i><i></i></div></div>
-    <div style="background:var(--surface)"><svg class="logo"><use href="#i-lock"/></svg></div>
+    <div style="background:var(--surface)"><svg class="zLogo" role="img" aria-label="Zaamin logo" viewBox="0 0 1303 298" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="zPm" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="436" y="99" width="151" height="199">
+<path d="M436.573 99.1389H586.432V297.414H436.573V99.1389Z" fill="white"/>
+</mask>
+<g mask="url(#zPm)">
+<path d="M509.626 123.325C529.766 123.325 542.735 142.09 543.007 165.363H476.244C476.515 142.093 489.486 123.325 509.626 123.325ZM509.626 100.091C478.246 100.091 452.817 129.585 452.817 165.962L452.83 166.876C442.158 170.348 434.557 179.419 434.557 190.062V248.003C434.557 273.796 468.168 294.712 509.626 294.712C551.081 294.712 584.693 273.796 584.693 248.003V190.062C584.693 179.417 577.092 170.347 566.421 166.876L566.435 165.962C566.435 129.585 541.006 100.091 509.626 100.091ZM488.323 220.156C488.323 209.74 497.859 201.295 509.626 201.295C521.393 201.295 530.928 209.74 530.928 220.156C530.928 226.824 527.018 232.687 521.122 236.039V253.398H498.129V236.039C492.232 232.686 488.323 226.824 488.323 220.156Z" fill-rule="evenodd" clip-rule="evenodd" fill="#F18550"/>
+</g>
+<path d="M857.072 116.721C869.937 116.721 881.28 119.418 891.102 124.813C900.923 130.07 908.601 138.231 914.134 149.298C919.805 160.364 922.641 174.613 922.641 192.042V292.056H860.6V201.587C860.6 189.691 858.801 180.077 855.205 172.745C851.608 165.413 844.484 161.748 833.833 161.748C827.469 161.748 821.867 163.408 817.025 166.728C812.184 170.048 808.449 174.682 805.82 180.63C803.192 186.44 801.878 193.426 801.878 201.587V292.056H743.986V201.587C743.986 189.691 741.981 180.077 737.969 172.745C734.096 165.413 727.179 161.748 717.219 161.748C710.856 161.748 705.254 163.408 700.412 166.728C695.571 169.909 691.836 174.474 689.207 180.422C686.717 186.232 685.472 193.287 685.472 201.587V292.056H622.808V121.701H685.472V145.978C687.132 141.69 690.729 137.332 696.262 132.906C701.934 128.341 708.92 124.537 717.219 121.493C725.519 118.312 734.303 116.721 743.571 116.721C753.67 116.721 762.108 118.243 768.886 121.286C775.664 124.191 781.198 128.133 785.486 133.113C789.912 138.093 793.44 143.488 796.068 149.298C798.005 144.318 801.809 139.338 807.48 134.358C813.29 129.24 820.484 125.021 829.06 121.701C837.775 118.381 847.112 116.721 857.072 116.721ZM961.716 292.056V121.701H1024.8V292.056H961.716ZM994.086 86.6339C984.126 86.6339 975.688 83.1756 968.771 76.2591C961.854 69.2042 958.396 60.8352 958.396 51.152C958.396 41.4688 961.854 33.0998 968.771 26.0449C975.826 18.8517 984.264 15.255 994.086 15.255C1000.59 15.255 1006.54 16.915 1011.93 20.235C1017.33 23.4166 1021.68 27.7049 1025 33.0998C1028.32 38.4947 1029.98 44.5121 1029.98 51.152C1029.98 60.8352 1026.46 69.2042 1019.4 76.2591C1012.35 83.1756 1003.91 86.6339 994.086 86.6339ZM1185.95 116.721C1197.85 116.721 1209.47 119.142 1220.81 123.983C1232.15 128.825 1241.49 136.502 1248.82 147.015C1256.15 157.39 1259.82 171.085 1259.82 188.1V292.056H1196.53V198.475C1196.53 186.301 1193.63 177.172 1187.82 171.085C1182.01 164.86 1174.4 161.748 1164.99 161.748C1158.77 161.748 1152.89 163.408 1147.35 166.728C1141.96 169.909 1137.53 174.474 1134.08 180.422C1130.76 186.232 1129.1 192.941 1129.1 200.55V292.056H1066.02V121.701H1129.1V146.808C1130.76 142.243 1134.21 137.678 1139.47 133.113C1144.87 128.41 1151.57 124.537 1159.6 121.493C1167.76 118.312 1176.54 116.721 1185.95 116.721Z" fill="url(#zPg0)"/>
+<path d="M13.6949 120.645H182.39L97.3161 247.011H175.75V291H9.12547e-05L84.8662 164.427H13.6949V120.645ZM337.319 291V263.403C336.074 266.17 332.893 270.181 327.774 275.438C322.794 280.694 316.154 285.467 307.855 289.755C299.555 293.905 289.872 295.98 278.805 295.98C262.205 295.98 247.681 291.968 235.231 283.945C222.781 275.784 213.098 264.925 206.181 251.368C199.265 237.673 195.806 222.526 195.806 205.926C195.806 189.327 199.265 174.249 206.181 160.692C213.098 146.997 222.781 136.069 235.231 127.908C247.681 119.746 262.205 115.665 278.805 115.665C289.457 115.665 298.794 117.394 306.817 120.853C314.84 124.173 321.342 128.184 326.322 132.888C331.302 137.452 334.76 141.672 336.697 145.545V120.645H399.361V291H337.319ZM257.64 205.926C257.64 213.673 259.439 220.659 263.035 226.884C266.632 232.97 271.404 237.743 277.353 241.201C283.439 244.659 290.148 246.388 297.48 246.388C305.088 246.388 311.797 244.659 317.607 241.201C323.417 237.743 327.982 232.97 331.302 226.884C334.76 220.659 336.489 213.673 336.489 205.926C336.489 198.18 334.76 191.263 331.302 185.177C327.982 178.952 323.417 174.11 317.607 170.652C311.797 167.055 305.088 165.257 297.48 165.257C290.148 165.257 283.439 167.055 277.353 170.652C271.404 174.11 266.632 178.952 263.035 185.177C259.439 191.263 257.64 198.18 257.64 205.926Z" fill="url(#zPg1)"/>
+<defs>
+<linearGradient id="zPg0" x1="1206.64" y1="32.8442" x2="879.864" y2="386.56" gradientUnits="userSpaceOnUse">
+<stop offset="0.0690365" stop-color="#B5E48C"/>
+<stop offset="1" stop-color="#168AAD" stop-opacity="0.82"/>
+</linearGradient>
+<linearGradient id="zPg1" x1="376.918" y1="31.8359" x2="72.2719" y2="237.795" gradientUnits="userSpaceOnUse">
+<stop offset="0.0690365" stop-color="#B5E48C"/>
+<stop offset="1" stop-color="#168AAD" stop-opacity="0.82"/>
+</linearGradient>
+</defs>
+</svg></div>
     <div style="background:var(--surface)"><svg class="logo"><use href="#i-chat"/></svg></div>
-    <div style="background:var(--surface)"><svg class="logo"><use href="#i-scale"/></svg></div>
+    <div style="background:#fff"><img src="assets/qanoon/logo-card.webp" alt="" style="width:100%;height:100%;object-fit:cover"></div>
     <div style="background:var(--surface)"><div class="mUrdu">کہانی</div></div>
   </div>
 </section>
@@ -977,12 +1067,17 @@ footer a:hover{color:var(--ink)}
   let wi = 0;
   const setRot = i => {
     track.style.transform = `translateY(${-i * words[0].getBoundingClientRect().height}px)`;
-    rot.style.backgroundColor = tints[i];
+    rot.style.backgroundColor = tints[i % tints.length];
     rot.style.width = (words[i].getBoundingClientRect().width + parseFloat(getComputedStyle(rot).paddingLeft) * 2) + 'px';
   };
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => setRot(wi));
   addEventListener('resize', () => setRot(wi));
-  if (!reduce) setInterval(() => { wi = (wi + 1) % words.length; setRot(wi); }, 2200);
+  if (!reduce) setInterval(() => {
+    wi += 1; setRot(wi);
+    if (wi === words.length - 1) setTimeout(() => {   // last item repeats the first: jump back unseen
+      track.style.transition = 'none'; wi = 0; setRot(0); track.getBoundingClientRect(); track.style.transition = '';
+    }, 800);
+  }, 2200);
 
   // scroll reveal
   const io = new IntersectionObserver(es => es.forEach(e => {
@@ -1004,18 +1099,140 @@ footer a:hover{color:var(--ink)}
     new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? svg.unpauseAnimations() : svg.pauseAnimations())).observe(svg);
   });
 
-  // Kollegio chat illustration: loops while visible
-  const chat = $('#chat'), steps = [...chat.querySelectorAll('[data-at]')], r1 = chat.querySelector('.r1');
-  let cs = 0, ct = null;
-  const renderChat = () => {
-    steps.forEach(e => e.classList.toggle('on', e.classList.contains('typing') ? cs === 2 : +e.dataset.at <= cs));
-    r1.classList.toggle('liked', cs >= 7);
-  };
-  if (reduce) { cs = 8; renderChat(); }
-  else new IntersectionObserver(es => es.forEach(e => {
-    clearInterval(ct);
-    if (e.isIntersecting) ct = setInterval(() => { cs = (cs + 1) % 13; renderChat(); }, 850);
-  }), { threshold: .3 }).observe(chat);
+  // Kollegio prototype: the real Figma screens, animated on one timeline
+  (() => {
+    const ph = $('#kPhone'); if (!ph) return;
+    const scr = ph.querySelector('.kScr'), E = {};
+    ph.querySelectorAll('[data-k]').forEach(e => E[e.dataset.k] = e);
+    const fit = () => scr.style.transform = 'scale(' + ph.clientWidth / 393 + ')';
+    new ResizeObserver(fit).observe(ph); fit();
+    const cl = x => Math.min(1, Math.max(0, x)), seg = (t, a, b) => cl((t - a) / (b - a)), lerp = (a, b, p) => a + (b - a) * p;
+    const eo = x => 1 - Math.pow(1 - x, 3), ei = x => x * x * x, eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+    const eob = x => { const c = 1.6; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+    const win = (t, a, b, f = .3) => Math.min(eo(seg(t, a, a + f)), 1 - ei(seg(t, b - f, b)));
+    const op = (k, v) => E[k].style.opacity = v.toFixed(3);
+    const tf = (k, v) => E[k].style.transform = v;
+    const L = 23;
+    const rise = (k, t, a, dy = 12) => { const p = eo(seg(t, a, a + .4)); op(k, p); tf(k, 'translateY(' + lerp(dy, 0, p) + 'px)'); };
+    const touch = [[0, 260, 520], [1.3, 120, 250], [2.0, 200, 420], [3.7, 240, 420], [4.15, 290, 278], [4.6, 260, 420], [5.8, 230, 420], [6.35, 196, 299], [6.9, 220, 420], [7.9, 240, 700],
+      [8.35, 196, 807], [8.9, 220, 700], [12.7, 230, 520], [13.2, 196, 430], [14.1, 346, 406], [14.5, 380, 420], [15.0, 230, 470], [15.5, 196, 430], [16.4, 56, 412], [16.9, 140, 560], [17.4, 198, 689], [18.0, 230, 760]];
+    const taps = [1.35, 4.2, 6.4, 8.4, 17.45], shown = [[.6, 1.7], [3.5, 4.55], [5.7, 6.8], [7.8, 8.8], [12.8, 14.3], [15.1, 16.6], [16.9, 17.9]];
+    const render = t => {
+      // screens
+      op('home', Math.max(1 - eo(seg(t, 1.6, 1.9)), eo(seg(t, 22.5, 23))));
+      op('chat', win(t, 1.6, 4.95));
+      const cw = win(t, 1.6, 4.95);
+      const b = eo(seg(t, 1.85, 2.3)); op('c-bub', b * cw); tf('c-bub', 'translateX(' + lerp(26, 0, b) + 'px)');
+      rise('c-q', t, 2.45); E['c-q'].style.opacity *= cw;
+      ['c-o1', 'c-o2'].forEach((k, i) => { const p = seg(t, 2.95 + i * .15, 3.4 + i * .15); op(k, cl(eo(p) * 1.4) * cw); tf(k, 'translateY(' + lerp(16, 0, eob(p)) + 'px) scale(' + (t > 4.15 && t < 4.3 && i ? .97 : 1) + ')'); });
+      op('quiz', win(t, 4.6, 7.4));
+      const qw = win(t, 4.6, 7.4);
+      ['q-prog', 'q-q', 'q-ch', 'q-o1', 'q-o2', 'q-o3', 'q-o4'].forEach((k, i) => { rise(k, t, 4.85 + i * .12); E[k].style.opacity *= qw; });
+      E['q-prog'].style.clipPath = 'inset(0 ' + lerp(60, 0, eo(seg(t, 5.0, 5.8))) + '% 0 0)';
+      op('q-o1on', eo(seg(t, 6.45, 6.65)) * qw);
+      // deck
+      const dw = win(t, 7.0, 19.2, .35);
+      op('deck', dw);
+      const ent = seg(t, 7.1, 7.65);
+      // card A: Cal Poly, right swipe
+      const d1 = eio(seg(t, 13.2, 14.1)), f1 = ei(seg(t, 14.1, 14.55));
+      tf('cardA', 'translate(' + (lerp(0, 150, d1) + 520 * f1).toFixed(1) + 'px,' + (lerp(30, 0, eo(ent)) - 24 * d1).toFixed(1) + 'px) rotate(' + (9 * d1 + 12 * f1).toFixed(2) + 'deg) scale(' + lerp(.94, 1, eob(ent)).toFixed(3) + ')');
+      op('cardA', Math.min(dw, cl(ent * 1.6), 1 - seg(t, 14.4, 14.55)));
+      E.cardA.querySelector('.kYes').style.opacity = eo(seg(t, 13.4, 14.0)).toFixed(3);
+      // card B: San Jose State, left swipe then undo
+      const d2 = eio(seg(t, 15.5, 16.4)), f2 = ei(seg(t, 16.4, 16.85)), back = eo(seg(t, 17.5, 18.1));
+      const x2 = lerp(-140 * d2 - 520 * f2, 0, back), r2 = lerp(-8 * d2 - 12 * f2, 0, back), y2 = lerp(-18 * d2, 0, back);
+      tf('cardB', 'translate(' + x2.toFixed(1) + 'px,' + (y2 + lerp(30, 0, eo(ent))).toFixed(1) + 'px) rotate(' + r2.toFixed(2) + 'deg)');
+      op('cardB', Math.min(dw, cl(ent * 1.6), t < 17.4 ? 1 - seg(t, 16.7, 16.85) : seg(t, 17.5, 17.65)));
+      E.cardB.querySelector('.kNo').style.opacity = (eo(seg(t, 15.7, 16.2)) * (1 - eo(seg(t, 17.6, 18.0)))).toFixed(3);
+      const u = eob(seg(t, 14.7, 15.1)) * (1 - eo(seg(t, 17.5, 17.75)));
+      op('undo', cl(u) * dw); tf('undo', 'translateY(' + lerp(10, 0, cl(u)) + 'px) scale(' + (t > 17.4 && t < 17.55 ? .92 : 1) + ')');
+      // Ask Reka sheet
+      const sh = eo(seg(t, 8.5, 9.0)) * (1 - ei(seg(t, 12.0, 12.4)));
+      op('dim', sh); tf('sheet', 'translateY(' + lerp(530, 0, sh).toFixed(1) + 'px)');
+      E.sheet.querySelectorAll('.kLine').forEach((e, i) => e.style.transform = 'scaleX(' + (1 - eio(seg(t, 9.1 + i * .38, 9.55 + i * .38))).toFixed(3) + ')');
+      E.sheet.querySelectorAll('.kRow').forEach((e, i) => e.style.opacity = (1 - eo(seg(t, 10.8 + i * .2, 11.2 + i * .2))).toFixed(3));
+      op('hero', win(t, 18.8, 23, .4));
+      // fingertip
+      let x = touch[0][1], y = touch[0][2];
+      for (let i = 1; i < touch.length; i++) if (t >= touch[i - 1][0]) { const p = eio(seg(t, touch[i - 1][0], touch[i][0])); x = lerp(touch[i - 1][1], touch[i][1], p); y = lerp(touch[i - 1][2], touch[i][2], p); }
+      let v = 0; shown.forEach(r => v = Math.max(v, Math.min(eo(seg(t, r[0], r[0] + .25)), 1 - ei(seg(t, r[1] - .25, r[1])))));
+      const press = taps.some(c => t > c - .06 && t < c + .16) || (t > 13.15 && t < 14.15) || (t > 15.45 && t < 16.45) ? .8 : 1;
+      E.touch.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) scale(' + press + ')';
+      op('touch', v);
+    };
+    if (reduce) { render(11.4); return; }
+    let t0 = null, acc = 0, raf = null;
+    const loop = now => { if (t0 === null) t0 = now; render(((acc + (now - t0) / 1000) % L)); raf = requestAnimationFrame(loop); };
+    render(0);
+    new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting && !raf) { t0 = null; raf = requestAnimationFrame(loop); }
+      else if (!e.isIntersecting && raf) { cancelAnimationFrame(raf); raf = null; acc = (acc + (performance.now() - (t0 || performance.now())) / 1000) % L; }
+    }), { threshold: .2 }).observe(ph);
+  })();
+
+  // Qanoon Connect prototype: real screens, one timeline
+  (() => {
+    const ph = $('#qPhone'); if (!ph) return;
+    const scr = ph.querySelector('.qScr'), sc = [...scr.querySelectorAll('.qS')], touchEl = scr.querySelector('.qTouch');
+    const fit = () => scr.style.transform = 'scale(' + ph.clientWidth / 430 + ')';
+    new ResizeObserver(fit).observe(ph); fit();
+    const cl = x => Math.min(1, Math.max(0, x)), seg = (t, a, b) => cl((t - a) / (b - a)), lerp = (a, b, p) => a + (b - a) * p;
+    const eo = x => 1 - Math.pow(1 - x, 3), ei = x => x * x * x, eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+    // [start, how it arrives, tap x, tap y, tap time]
+    const T = [[0, 'fade', 215, 666, 1.75], [2.2, 'push', 350, 632, 4.35], [4.8, 'push', 36, 43, 6.55], [7.0, 'pop', 172, 888, 8.15], [8.6, 'fade', 368, 798, 9.95],
+      [10.4, 'push', 215, 312, 12.35], [12.8, 'push', 36, 43, 15.15], [15.6, 'pop', 346, 888, 16.55], [17.0, 'fade'], [19.0, 'fade', 215, 602, 20.55],
+      [21.0, 'push', 200, 712, 22.95], [23.4, 'push', 36, 43, 25.15], [25.6, 'pop', 172, 888, 26.55], [27.0, 'fade', 86, 888, 28.55], [29.0, 'fade']];
+    const L = 32, D = .45;
+    const render = t => {
+      sc.forEach((el, i) => {
+        const [a, how] = T[i], b = i + 1 < T.length ? T[i + 1][0] : L, nextHow = i + 1 < T.length ? T[i + 1][1] : 'fade';
+        const pin = eo(seg(t, a, a + D)), pout = eo(seg(t, b, b + D));
+        let vis = t >= a && t < b + D, x = 0, o = 1, z = 1;
+        if (i === 0 && t >= L - .5) { vis = true; z = 0; }
+        if (!vis) { el.style.visibility = 'hidden'; return; }
+        el.style.visibility = 'visible';
+        if (t < a + D && i > 0) { if (how === 'push') { x = lerp(100, 0, pin); z = 3; } else if (how === 'pop') { x = lerp(-30, 0, pin); z = 1; } else { o = pin; z = 3; } }
+        if (t >= b) { if (nextHow === 'push') { x = lerp(0, -30, pout); z = 1; } else if (nextHow === 'pop') { x = lerp(0, 100, pout); z = 3; } else { z = 1; } }
+        if (i === T.length - 1) o = Math.min(o, 1 - eo(seg(t, L - .5, L)));
+        el.style.transform = 'translateX(' + x.toFixed(2) + '%)'; el.style.opacity = o.toFixed(3); el.style.zIndex = z;
+        el.style.filter = x < -0.5 ? 'brightness(' + (1 - .08 * (-x / 30)).toFixed(3) + ')' : 'none';
+        el.querySelectorAll('.qP').forEach((p, j) => {
+          if (p.classList.contains('qDots')) { const q = eo(seg(t, a + 1.3, a + 1.6)); p.style.opacity = (q * (.55 + .45 * (.5 + .5 * Math.sin(t * 7)))).toFixed(3); return; }
+          const q = how === 'pop' ? 1 : eo(seg(t, a + .35 + j * .14, a + .75 + j * .14)); p.style.opacity = q.toFixed(3); p.style.transform = 'translateY(' + lerp(14, 0, q).toFixed(1) + 'px)';
+        });
+      });
+      // fingertip: comes in, taps, leaves
+      let v = 0, x = 215, y = 600, press = 1;
+      T.forEach(([a, , tx, ty, tt]) => {
+        if (tt === undefined) return;
+        const k = eo(seg(t, tt - .7, tt - .5)) * (1 - ei(seg(t, tt + .2, tt + .45)));
+        if (k > v) { v = k; const m = eio(seg(t, tt - .7, tt - .05)); x = lerp(tx + 50, tx, m); y = lerp(ty + 90, ty, m); }
+        if (t > tt - .05 && t < tt + .14) press = .8;
+      });
+      touchEl.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) scale(' + press + ')';
+      touchEl.style.opacity = v.toFixed(3);
+    };
+    if (reduce) { render(13.5); return; }
+    let t0 = null, acc = 0, raf = null;
+    const loop = now => { if (t0 === null) t0 = now; render((acc + (now - t0) / 1000) % L); raf = requestAnimationFrame(loop); };
+    render(0);
+    new IntersectionObserver(es => es.forEach(e => {
+      const on = e.isIntersecting && e.intersectionRatio >= .2;
+      if (on && !raf) { t0 = null; raf = requestAnimationFrame(loop); }
+      else if (!on && raf) { cancelAnimationFrame(raf); raf = null; acc = (acc + (performance.now() - (t0 || performance.now())) / 1000) % L; }
+    }), { threshold: [0, .2, .5] }).observe(ph);
+  })();
+
+  // mobile menu
+  (() => {
+    const nav = $('.nav'), btn = nav.querySelector('.menuBtn');
+    const set = open => { nav.classList.toggle('open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
+    btn.addEventListener('click', () => set(!nav.classList.contains('open')));
+    nav.querySelectorAll('.mMenu a').forEach(a => a.addEventListener('click', () => set(false)));
+    addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('open')) { set(false); btn.focus(); } });
+    document.addEventListener('click', e => { if (!nav.contains(e.target)) set(false); });
+  })();
 
   // journey rail
   const jList = $('#jList'), jFill = $('#jFill'), jItems = $$('.jItem');
