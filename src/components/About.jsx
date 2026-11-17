@@ -8,7 +8,7 @@ export default function About() {
         <Reveal className="qf">
           <h3>Quick facts</h3>
           <dl>{QUICK_FACTS.map(([dt, dd]) => <div key={dt}><dt>{dt}</dt><dd>{dd}</dd></div>)}</dl>
-          <a className="pill butter" href="#contact"><span className="dot"></span>Open to remote roles</a>
+          {/* <a className="pill butter" href="#contact"><span className="dot"></span>Open to remote roles</a> */}
         </Reveal>
         <Reveal className="aboutCard" delay="1">
           <h2>Engineer by craft, curious by nature.</h2>
