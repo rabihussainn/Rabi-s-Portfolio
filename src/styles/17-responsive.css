@@ -37,7 +37,7 @@
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
-  .rv,.ico{opacity:1;transform:none;filter:none}
+  .ico{opacity:1;transform:none;filter:none}
   .sw>span{transform:none}
   .stk,.tl,.mePhoto{opacity:1;transform:none}
   .nav{transform:translate(-50%,0)}

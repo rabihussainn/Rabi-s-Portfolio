@@ -1,30 +1,39 @@
-import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { STACK } from '../data/stack';
-import { useInView } from '../hooks/useInView';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 import { cx } from '../lib';
 import Icon from './Icon';
 import { Reveal } from './ui';
 
 const STAGGER = 0.045; // seconds between icons popping in
+const SPRING = [0.34, 1.56, 0.64, 1];
+const EASE = [0.22, 1, 0.36, 1];
+const ICO_VIEWPORT = { once: true, amount: 0.2 };
 
 function ToolGroup({ group }) {
-  const [ref, inView] = useInView({ threshold: 0.2 });
-  // The stagger only applies to the entrance; drop it afterwards so hovers feel instant.
-  const [settled, setSettled] = useState(false);
-  useEffect(() => {
-    if (!inView) return;
-    const t = setTimeout(() => setSettled(true), 1400);
-    return () => clearTimeout(t);
-  }, [inView]);
+  const reduceMotion = useReducedMotion();
 
   return (
-    <div ref={ref} className={cx('grp', group.id, inView && 'in')}>
+    <div className={cx('grp', group.id)}>
       <h3>{group.title}</h3>
       <div className="icons">
         {group.items.map(([icon, label], i) => (
-          <div key={label} className="ico" style={settled ? undefined : { transitionDelay: `${i * STAGGER}s, ${i * STAGGER}s, 0s, 0s` }}>
-            <span className="g"><Icon name={icon} /></span>{label}
-          </div>
+          reduceMotion ? (
+            <div key={label} className="ico">
+              <span className="g"><Icon name={icon} /></span>{label}
+            </div>
+          ) : (
+            <motion.div
+              key={label}
+              className="ico"
+              initial={{ opacity: 0, y: 16, scale: 0.94 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={ICO_VIEWPORT}
+              transition={{ opacity: { duration: 0.5, ease: EASE, delay: i * STAGGER }, default: { duration: 0.7, ease: SPRING, delay: i * STAGGER } }}
+            >
+              <span className="g"><Icon name={icon} /></span>{label}
+            </motion.div>
+          )
         ))}
       </div>
     </div>

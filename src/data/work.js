@@ -5,7 +5,7 @@ export const FEATURED = [
     tags: [{ tone: 'lilac', label: 'Current role' }, { label: 'Remote, US' }, { label: 'Jan 2026 – now' }],
     brand: { name: 'Kollegio', href: 'https://www.kollegio.ai/', logo: 'assets/kollegio/symbol.png', logoAlt: 'Kollegio logo' },
     summary: 'An AI-powered EdTech startup making college discovery, admissions and scholarships more accessible to students across the US.',
-    facts: [['Role', 'Software Engineer'], ['Worked across', 'Frontend, GraphQL, Mixpanel'], ['Led', 'REST → GraphQL migration']],
+    facts: [['Role', 'Software Engineer'], ['Worked across', 'Frontend, GraphQL, Mixpanel'], ['Led', 'Features, POC → production']],
     proof: [
       ['4', 'product areas I shipped features in: recommender, Hero Journey, Discover, Scholarship Essays'],
       ['6', 'product surfaces instrumented in Mixpanel, with funnels and dashboards'],
@@ -31,7 +31,7 @@ export const FEATURED = [
         ],
       },
     ],
-    stack: ['React', 'Remix', 'TypeScript', 'GraphQL', 'NestJS', 'Prisma', 'PostgreSQL', 'React Query', 'Chakra UI', 'Mixpanel'],
+    stack: ['React', 'Remix', 'TypeScript', 'GraphQL', 'NestJS', 'Prisma', 'PostgreSQL', 'React Query', 'Chakra UI', 'Mixpanel', 'Cloudflare', 'Docker'],
     visual: { tone: 'lilac', caption: 'AI chat and swipe recommender', badge: 'Prototype', kind: 'kollegio' },
   },
   {
@@ -67,6 +67,7 @@ export const FEATURED = [
         title: 'Cloud & delivery',
         items: [
           ['Ran Django SaaS backends on AWS', ' (EC2, S3, RDS) with a focus on reliability and security.'],
+          ['Migrated EC2 and RDS to a different AWS region', ' during a regional outage, keeping downtime to a minimum.'],
           ['Set up CI/CD with GitHub Actions', ' for automated deployments.'],
           ['Launched Calify and Prep&Co', ' on iOS and Android with React Native.'],
           ['Built the Prep&Co meal subscription site', ' in Next.js as an intern.'],

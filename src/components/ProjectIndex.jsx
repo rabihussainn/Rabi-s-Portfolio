@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { PROJECTS } from '../data/projects';
 import { useReducedMotion } from '../hooks/useReducedMotion';
@@ -45,9 +46,9 @@ const PlusIcon = () => (
 );
 
 function ProjectRow({ project: p, index, open, onToggle, hover }) {
-  const [ref, inView] = useReveal();
+  const reveal = useReveal();
   return (
-    <div ref={ref} className={cx('row', 'rv', inView && 'in', open && 'open')} data-peek={index}>
+    <motion.div className={cx('row', open && 'open')} data-peek={index} {...reveal}>
       <button className="rowBtn" aria-expanded={open} onClick={onToggle} {...hover}>
         <span className="rowYear">{p.year}</span>
         <span className="rowName">{p.name}<small>{p.blurb}</small></span>
@@ -65,7 +66,7 @@ function ProjectRow({ project: p, index, open, onToggle, hover }) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
