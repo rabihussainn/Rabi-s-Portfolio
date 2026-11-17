@@ -97,7 +97,7 @@ export default function Hero() {
 
         <div className="heroRow">
           <Reveal>
-            <p className="lede">I’m a <b>full-stack software engineer</b> who has worked <b>fully remote</b> from day one, including for a US startup across time zones. I build the interface and the systems behind it, down to the APIs, integrations and cloud setup that let apps scale, stay reliable and ship easily.</p>
+            <p className="lede">I like understanding how things work and figuring out how to make them work better. As a <b>full-stack software engineer</b>, I work across interfaces, APIs and the systems that bring products together. I'm drawn to thoughtful user experiences, solving practical problems and building technology that works just as well behind the scenes as it does on the surface.</p>
             <div className="heroActions">
               <ArrowButton href="#work" arrow="↘">See my work</ArrowButton>
               <ArrowButton ghost href={RESUME_URL} target="_blank" rel="noopener">Resume (PDF)</ArrowButton>
